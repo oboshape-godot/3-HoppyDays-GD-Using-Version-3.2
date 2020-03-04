@@ -1,0 +1,146 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 320, 320 )
+
+[node name="Level1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1076.3, 1689.39 )
+current = true
+zoom = Vector2( 3, 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1287.02, 806.939 )
+JUMPSPEED = 3000
+
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Floors"]
+position = Vector2( 2361.89, 2444.88 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D4"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D4"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Floors"]
+position = Vector2( 1830.82, 2580.37 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D3"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D3"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Floors"]
+position = Vector2( 349.383, 1901.69 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D2"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D2"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Floors"]
+position = Vector2( 1909.05, 1628.2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D6"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D6"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Floors"]
+position = Vector2( 1340.16, 1633.11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D9"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D9"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Floors"]
+position = Vector2( 65.6201, 1636.24 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D7"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D7"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Floors"]
+position = Vector2( 2491.78, 1631.3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D8"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D8"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Floors"]
+position = Vector2( 1237.26, 2752.94 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D5"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D5"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floors"]
+position = Vector2( 678.864, 2471.42 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floors/StaticBody2D"]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D"]
+visible = false
+shape = SubResource( 1 )
