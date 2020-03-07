@@ -31,6 +31,9 @@ func apply_gravity():
 	if is_on_floor():
 		motion.y = GRAVITY
 		isJumping = false
+	elif is_on_ceiling():
+		motion.y = GRAVITY
+		isJumping = true
 	else:
 		motion.y += GRAVITY
 		motion.y = clamp(motion.y,-JUMPSPEED,MAX_FALL_SPEED)
@@ -46,3 +49,4 @@ func Jump():
 
 func Animate():
 	emit_signal("sigAnimate", motion, isJumping)
+
