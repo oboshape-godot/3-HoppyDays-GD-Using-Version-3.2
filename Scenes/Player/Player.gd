@@ -9,6 +9,7 @@ export var MAX_FALL_SPEED : int = 3500
 export var JUMPSPEED : int = 5000
 export var LIVES : int = 3
 
+
 const UP = Vector2.UP # same as Vector2(0,-1)
 const WORLD_LIMIT : float = 4000.0
 
@@ -50,9 +51,9 @@ func apply_gravity():
 
 func Jump():
 	if (Input.is_action_just_pressed("jump")) and isJumping == false:
-		# heres a little catch, just in case we walk off a platform to stop air jump
 		motion.y -= JUMPSPEED
 		isJumping = true
+		$SFX_Jump.play()
 
 func Animate():
 	emit_signal("sigAnimate", motion, isJumping)
@@ -62,6 +63,7 @@ func Hurt():
 	yield(get_tree(),"idle_frame")
 	motion.y -= JUMPSPEED
 	isJumping = true
+	$SFX_Hurt.play()
 	LIVES -= 1
 	if LIVES <= 0 :
 		EndGame()
@@ -69,4 +71,3 @@ func Hurt():
 func EndGame():
 	get_tree().change_scene("res://Levels/GameOver/GameOver.tscn")
 	pass
-
