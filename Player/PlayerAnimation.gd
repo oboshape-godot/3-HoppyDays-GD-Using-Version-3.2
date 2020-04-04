@@ -3,7 +3,6 @@ extends AnimatedSprite
 
 
 func _on_Player_animateSignal(_motion):
-	print("animation signal")
 	if _motion.y < 0 :
 		play("jump")
 	elif _motion.x != 0 :

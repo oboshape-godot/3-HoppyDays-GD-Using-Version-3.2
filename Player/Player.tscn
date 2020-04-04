@@ -10,7 +10,7 @@ height = 77.9986
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -11.2447, -73.6519 )
-collision_mask = 2
+collision_mask = 6
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

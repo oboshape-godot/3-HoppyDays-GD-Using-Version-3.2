@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 var motion = Vector2.ZERO
-var moveVelocity
+var moveVelocity # not used only to stop move and slide warnings
+var lives = 3
 
 const SPEED = 1000
 const GRAVITY = 200
@@ -49,4 +50,13 @@ func Animate():
 	emit_signal("animateSignal", motion)
 	
 func end_game():
-	get_tree().change_scene("res://Levels/GameOver.tscn")
+	if get_tree().change_scene("res://Levels/GameOver.tscn") != OK :
+		print("error changing scene on player.gd end_game()")
+
+func Hurt():
+	position.y -= 3
+	yield(get_tree(), "idle_frame")
+	motion.y -= JUMPSPEED
+	lives -= 1
+	if lives < 0:
+		end_game()
