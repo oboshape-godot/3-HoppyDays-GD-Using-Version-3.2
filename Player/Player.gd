@@ -2,14 +2,13 @@ extends KinematicBody2D
 
 var motion = Vector2.ZERO
 var moveVelocity # not used only to stop move and slide warnings
-var lives = 3
 
 const SPEED = 1000
 const GRAVITY = 200
 const JUMPSPEED = 3500
 const UP = Vector2(0,-1)
 const WORLD_LIMIT = 3000
-
+const BOOST_MULTIPLIER = 1.5
 signal animateSignal
 
 func _physics_process(_delta):
@@ -18,14 +17,14 @@ func _physics_process(_delta):
 	Move()
 	Animate()
 	moveVelocity = move_and_slide(motion, UP)
-	
+
 
 
 func apply_Gravity():
 	if position.y > WORLD_LIMIT:
-		end_game()
-	if is_on_floor():
-		motion.y = 5  # instead of 0 to force a slight collision
+		get_tree().call_group("GameStateGroup", "end_game")
+	elif is_on_floor():
+		motion.y = 1  # instead of 0 to force a slight collision
 	elif is_on_ceiling():
 		motion.y = 1
 	else:
@@ -36,6 +35,7 @@ func apply_Gravity():
 func Jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		motion.y -= JUMPSPEED
+		$AudioStreamPlayer_Jump_SFX.play()
 
 
 func Move():
@@ -48,15 +48,18 @@ func Move():
 
 func Animate():
 	emit_signal("animateSignal", motion)
-	
-func end_game():
-	if get_tree().change_scene("res://Levels/GameOver.tscn") != OK :
-		print("error changing scene on player.gd end_game()")
+
 
 func Hurt():
-	position.y -= 3
+	motion.y = 0
+	position.y -= 1
 	yield(get_tree(), "idle_frame")
 	motion.y -= JUMPSPEED
-	lives -= 1
-	if lives < 0:
-		end_game()
+	$AudioStreamPlayer_Hurt_SFX.play()
+
+func Boost():
+	motion.y = 0
+	position.y -= 3
+	yield(get_tree(), "idle_frame")
+
+	motion.y = -(JUMPSPEED * BOOST_MULTIPLIER)
