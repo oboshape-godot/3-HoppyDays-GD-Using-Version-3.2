@@ -1,21 +1,38 @@
 extends Node2D
 
 var lives  = 3
+var coins = 0
+var coinsNeededForAnotherLife = 10
+
 
 func _ready():
 	add_to_group("GameStateGroup")
-	get_tree().call_group("UI", "UpdateLives",lives)
-	
-	
+	UpdateGUI()
+
+
 func Hurt():
 	lives -= 1
-	get_tree().call_group("UI", "UpdateLives",lives)
+	UpdateGUI()
 	if lives <= 0:
 		end_game()
 	else:
 		$Player.Hurt()
-	
-	
+
+
+func Coin_Up():
+	coins += 1
+	UpdateGUI()
+	if (coins % coinsNeededForAnotherLife) == 0:
+		LifeUp()
+
+
+func UpdateGUI():
+	get_tree().call_group("UI", "UpdateGUI",lives, coins)
+
+func LifeUp():
+	lives += 1
+	UpdateGUI()
+
 
 func end_game():
 	if get_tree().change_scene("res://Levels/GameOver.tscn") != OK :
