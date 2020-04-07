@@ -23,7 +23,7 @@ func _physics_process(_delta):
 func apply_Gravity():
 	if position.y > WORLD_LIMIT:
 		get_tree().call_group("GameStateGroup", "end_game")
-	elif is_on_floor():
+	elif is_on_floor() and motion.y > 0:
 		motion.y = 1  # instead of 0 to force a slight collision
 	elif is_on_ceiling():
 		motion.y = 1
@@ -51,15 +51,13 @@ func Animate():
 
 
 func Hurt():
-	motion.y = 0
 	position.y -= 1
 	yield(get_tree(), "idle_frame")
-	motion.y -= JUMPSPEED
+	motion.y = -JUMPSPEED
 	$AudioStreamPlayer_Hurt_SFX.play()
 
 func Boost():
-	motion.y = 0
-	position.y -= 3
+	position.y -= 1
 	yield(get_tree(), "idle_frame")
 
-	motion.y = -(JUMPSPEED * BOOST_MULTIPLIER)
+	motion.y = -JUMPSPEED * BOOST_MULTIPLIER

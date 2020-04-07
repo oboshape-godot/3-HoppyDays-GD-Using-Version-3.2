@@ -18,11 +18,11 @@ scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.03, 1 )
-motion_mirroring = Vector2( 4096, 4096 )
+motion_mirroring = Vector2( 8192, 8192 )
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-margin_right = 4096.0
-margin_bottom = 4096.0
+margin_right = 8192.0
+margin_bottom = 8192.0
 texture = ExtResource( 1 )
 stretch_mode = 2
 __meta__ = {
