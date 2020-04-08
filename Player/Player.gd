@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var motion = Vector2.ZERO
 var moveVelocity # not used only to stop move and slide warnings
+var isJumping = false # simpe bool flag to get around intermitent jumping
 
 const SPEED = 1000
 const GRAVITY = 200
@@ -21,6 +22,10 @@ func _physics_process(_delta):
 
 
 func apply_Gravity():
+	# if we landed, reset the jumping flag	
+	if is_on_floor():
+		isJumping = false
+		
 	if position.y > WORLD_LIMIT:
 		get_tree().call_group("GameStateGroup", "end_game")
 	elif is_on_floor() and motion.y > 0:
@@ -33,7 +38,8 @@ func apply_Gravity():
 
 
 func Jump():
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and isJumping == false:
+		isJumping = true
 		motion.y -= JUMPSPEED
 		$AudioStreamPlayer_Jump_SFX.play()
 
@@ -54,10 +60,11 @@ func Hurt():
 	position.y -= 1
 	yield(get_tree(), "idle_frame")
 	motion.y = -JUMPSPEED
+	isJumping = true;
 	$AudioStreamPlayer_Hurt_SFX.play()
 
 func Boost():
 	position.y -= 1
 	yield(get_tree(), "idle_frame")
-
 	motion.y = -JUMPSPEED * BOOST_MULTIPLIER
+	isJumping = true;
