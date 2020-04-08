@@ -37,3 +37,7 @@ func LifeUp():
 func end_game():
 	if get_tree().change_scene("res://Levels/GameOver.tscn") != OK :
 		print("error changing scene on player.gd end_game()")
+
+func win_game():
+	if get_tree().change_scene("res://Levels/Victory.tscn") != OK :
+		print("error win game change scene not working!")
