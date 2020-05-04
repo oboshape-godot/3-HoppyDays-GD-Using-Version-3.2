@@ -7,8 +7,8 @@
 [ext_resource path="res://SFX/pain.ogg" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 34.0772
-height = 25.3494
+radius = 67.555
+height = 68.2927
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 13.3283, -24.5061 )
@@ -18,16 +18,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 51.3933, 64.2417 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2( -0.80304, -83.5142 )
-shape = SubResource( 1 )
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2( -49.7873, 59.4236 )
 shape = SubResource( 1 )
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
